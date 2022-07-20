@@ -41,7 +41,7 @@ app.get("/error", async (req, res, next) => {
   res.status(200).render("error");
 });
 
-// Authentication +
+// Authentication
 const loginRoute = require("./routes/authentication/loginRoutes");
 const registerRoutes = require("./routes/authentication/registerRoutes");
 const logoutRoute = require("./routes/authentication/logout");
