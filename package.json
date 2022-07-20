@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jakub Solnička",
@@ -25,5 +26,8 @@
     "pug": "^3.0.2",
     "socket.io": "^2.3.0",
     "sweetalert2": "^11.4.9"
+  },
+  "engines": {
+    "node": "^10"
   }
 }
