@@ -29,7 +29,7 @@ app.use(
   })
 );
 
-// compression for text, not images
+// compression for text only, not images
 app.use(compression());
 
 // Index
