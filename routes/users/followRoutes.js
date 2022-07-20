@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 router.get("/:id", async (req, res) => {
   try {
-    const start = Date.now();
+    //const start = Date.now();
     const clickedUserID = req.params.id;
     const loggedinUserID = req.session.user._id;
     let clickedUser = await User.findById(clickedUserID);
@@ -89,8 +89,8 @@ router.get("/:id", async (req, res) => {
       followersNumber = followersArray.length;
       followingsNumber = followingsArray.length;
     }
-    const millis = Date.now() - start;
-    console.log(millis);
+    // const millis = Date.now() - start;
+    // console.log(millis);
     res.status(200).render("user-profile", {
       posts: postsUser,
       loggedinUserEqualsClicked: "",

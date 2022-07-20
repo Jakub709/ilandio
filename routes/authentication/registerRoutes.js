@@ -47,7 +47,7 @@ router.post("/", async (req, res, next) => {
           data.password = await bcrypt.hash(password, 10);
           User.create(data).then((user) => {
             req.session.user = user;
-            return res.redirect("/my-profile");
+            return res.redirect("/after-reg");
           });
         } else {
           // Uživatel nalezen

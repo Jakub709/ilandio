@@ -14,8 +14,8 @@ router.get("/:email", async (req, res, next) => {
     const loggedinUserEqualsClicked =
       clickedUserEmail == loggedinUserID ? "disabled-button" : "active-button";
     const userProfile = await User.findOne({ email: clickedUserEmail });
-    console.log(userProfile);
-    console.log(clickedUserEmail);
+    // console.log(userProfile);
+    // console.log(clickedUserEmail);
     let follow = "";
     let unfollow = "";
     if (userProfile.followers.includes(loggedinUserID)) {
@@ -29,11 +29,11 @@ router.get("/:email", async (req, res, next) => {
     const postsUser = await Post.find({
       postedByEmail: clickedUserEmail,
     }).sort({ createdAt: -1 });
-    console.log(postsUser);
+    // console.log(postsUser);
     const followersArray = userProfile.followers;
-    console.log(followersArray);
+    // console.log(followersArray);
     const followingsArray = userProfile.following;
-    console.log(followingsArray);
+    // console.log(followingsArray);
     const followers = await User.find({
       _id: { $in: followersArray },
     });
@@ -41,9 +41,9 @@ router.get("/:email", async (req, res, next) => {
       _id: { $in: followingsArray },
     });
     const followersNumber = followersArray.length;
-    console.log(followersNumber);
+    // console.log(followersNumber);
     const followingsNumber = followingsArray.length;
-    console.log(followingsNumber);
+    // console.log(followingsNumber);
     res.status(200).render("user-profile", {
       posts: postsUser,
       loggedinUserEqualsClicked: loggedinUserEqualsClicked,

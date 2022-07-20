@@ -36,12 +36,12 @@ updatePassword.addEventListener("click", function (e) {
     password: password.value,
     passwordConf: passwordConf.value,
   };
-  console.log(data);
+  //console.log(data);
   $.post("/reset-password", data, (postData, status, xhr) => {
     if (!postData) {
       return;
     } else {
-      console.log(postData);
+      //console.log(postData);
       id.value = "";
       password.value = "";
       passwordConf.value = "";

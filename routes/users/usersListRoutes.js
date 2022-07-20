@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 router.get("/", async (req, res) => {
   try {
     // 2) Execute query
-    const start = Date.now();
+    //const start = Date.now();
     //const query = await User.find();
     const features = new APIFeatures(User.find(), req.query)
       .filter()
@@ -32,8 +32,8 @@ router.get("/", async (req, res) => {
       url = url + "?";
     }
 
-    const millis = Date.now() - start;
-    console.log(millis);
+    // const millis = Date.now() - start;
+    // console.log(millis);
     res.status(200).render("users-list", {
       users: users,
       usersCounter: usersCounter,

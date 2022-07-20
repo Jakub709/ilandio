@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 3333;
+const compression = require("compression");
 const path = require("path");
 const bodyParser = require("body-parser");
 const mongoose = require("./database");
@@ -27,6 +28,9 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+// compression for text, not images
+app.use(compression());
 
 // Index
 app.get("/", async (req, res, next) => {

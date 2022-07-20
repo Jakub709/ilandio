@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 router.get("/", async (req, res) => {
   try {
     // 2) Execute query
-    const start = Date.now();
+    //const start = Date.now();
     // const query = await Post.find();
     // const totalCounter = query.length;
     const features = new APIFeatures(Post.find(), req.query)
@@ -33,8 +33,8 @@ router.get("/", async (req, res) => {
     if (!checkFilter) {
       url = url + "?";
     }
-    const millis = Date.now() - start;
-    console.log(millis);
+    // const millis = Date.now() - start;
+    // console.log(millis);
     res.status(200).render("posts-list", {
       posts: posts,
       postsCounter: postsCounter,

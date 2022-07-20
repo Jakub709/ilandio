@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const start = Date.now();
+    //const start = Date.now();
     // ID přihlášeného uživatele a kliknutého uživatele
     const clickedUserID = req.params.id;
     const loggedInUserID = req.session.user._id;
@@ -44,8 +44,8 @@ router.get("/:id", async (req, res, next) => {
     });
     const followersNumber = followersArray.length;
     const followingsNumber = followingsArray.length;
-    const millis = Date.now() - start;
-    console.log(millis);
+    // const millis = Date.now() - start;
+    // console.log(millis);
     res.status(200).render("user-profile", {
       posts: postsUser,
       loggedinUserEqualsClicked: loggedinUserEqualsClicked,

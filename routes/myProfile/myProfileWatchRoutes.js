@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 router.get("/", async (req, res, next) => {
   try {
-    const start = Date.now();
+    //const start = Date.now();
     const loggedinUserID = req.session.user._id;
     const userProfile = await User.findById(loggedinUserID);
     let follow = "follow-active";
@@ -28,8 +28,8 @@ router.get("/", async (req, res, next) => {
     });
     const followersNumber = followersArray.length;
     const followingsNumber = followingsArray.length;
-    const millis = Date.now() - start;
-    console.log(millis);
+    // const millis = Date.now() - start;
+    // console.log(millis);
     res.status(200).render("user-profile", {
       posts: postsUser,
       loggedinUserEqualsClicked: "disabled-button",

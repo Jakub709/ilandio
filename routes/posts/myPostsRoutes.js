@@ -39,7 +39,7 @@ router.post("/", async (req, res, next) => {
       group: req.body.group,
       environment: req.body.environment,
     };
-    console.log(postData);
+    //console.log(postData);
     let newPost = await Post.create(postData);
 
     res.status(201).send({

@@ -127,9 +127,9 @@ submitButton.addEventListener("click", function (e) {
     filterString += `&sort=-price`;
   }
   if (following.checked) {
-    window.location.href = `http://localhost:3333/posts-list-following?${filterString}`;
+    window.location.href = `/posts-list-following?${filterString}`;
   } else {
-    window.location.href = `http://localhost:3333/posts-list?${filterString}`;
+    window.location.href = `/posts-list?${filterString}`;
   }
 });
 
@@ -139,12 +139,12 @@ const searchBtn = document.querySelector(".bx-search");
 
 inputSearch.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
-    window.location.href = `http://localhost:3333/posts-search?search=${inputSearch.value}`;
+    window.location.href = `/posts-search?search=${inputSearch.value}`;
   }
 });
 searchBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  window.location.href = `http://localhost:3333/posts-search?search=${inputSearch.value}`;
+  window.location.href = `/posts-search?search=${inputSearch.value}`;
 });
 
 // Modal Filter

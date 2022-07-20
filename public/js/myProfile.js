@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     region.value = getData.userLoggedIn.region;
     hex.value = getData.userLoggedIn.hex;
     pfoto.src = getData.userLoggedIn.profilePic;
-    console.log(Date.now());
+    //console.log(Date.now());
   });
 });
 
@@ -106,7 +106,7 @@ updatePassword.addEventListener("click", function (e) {
     password: password.value,
     passwordConf: passwordConf.value,
   };
-  console.log(data);
+  //console.log(data);
   $.post("/my-profile-update-password", data, (postData, status, xhr) => {
     if (!postData) {
       return;

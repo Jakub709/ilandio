@@ -4,12 +4,12 @@ const searchBtn = document.querySelector(".bx-search");
 
 inputSearch.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
-    window.location.href = `http://localhost:3333/users-search?search=${inputSearch.value}`;
+    window.location.href = `/users-search?search=${inputSearch.value}`;
   }
 });
 searchBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  window.location.href = `http://localhost:3333/users-search?search=${inputSearch.value}`;
+  window.location.href = `/users-search?search=${inputSearch.value}`;
 });
 
 // Go up

@@ -1,116 +1,3 @@
-// ADDING A NEW MEMEBER TO A GROUP CHAT
-
-let timer, userToAdd;
-
-const searchBox = $("#addNewUserModalTextBox");
-const addUser = $("#addNewUserModalButton");
-
-if (searchBox != null) {
-  searchBox.on("keydown", function () {
-    clearTimeout(timer);
-    const textbox = $(this);
-    let value = textbox.val();
-
-    if (value === "" && event.keyCode === 8) {
-      $(".userList").html("");
-      return;
-    }
-
-    timer = setTimeout(() => {
-      value = textbox.val().trim();
-
-      if (value === "") {
-        $(".userList").html("");
-      } else {
-        searchUsers(value);
-      }
-    }, 1000);
-  });
-}
-
-function searchUsers(searchTerm) {
-  $.get("/api/users", { search: searchTerm }, (results) => {
-    outputSelectableUsers(results, $(".userList"));
-  });
-}
-
-function outputSelectableUsers(results, container) {
-  container.html("");
-
-  results.forEach((result) => {
-    if (users.some((user) => user._id === result._id)) {
-      return;
-    }
-
-    const html = createUserHtml(result);
-    const element = $(html);
-    element.click(() => userSelected(result));
-
-    container.append(element);
-  });
-}
-
-function createUserHtml(userData) {
-  return `<div class='user'>
-                <div class='userImageContainer'>
-                    <img src='${userData.profilePic}'>
-                </div>
-                <div class='userDetailsContainer'>
-                    <div class='header'>
-                        <a href='/user-profile/${userData._id}'>${userData.name}</a>
-                        <span class='username'>@${userData.username}</span>
-                    </div>
-                </div>
-            </div>`;
-}
-
-function userSelected(user) {
-  searchBox.val(user.name).focus();
-  $(".userList").html("");
-  userToAdd = user;
-}
-
-if (addUser != null) {
-  addUser.on("click", () => {
-    if (userToAdd == null) {
-      alert("No user selected. Please try again");
-      return;
-    } else {
-      $.ajax({
-        url: `/api/chats/${chatId}/addNewMember`,
-        data: userToAdd,
-        type: "PUT",
-        success: () => location.reload(),
-        error: () => confirm("Could not update. Please try again"),
-      });
-    }
-  });
-}
-
-$("#addNewUserModal").on("hidden.bs.modal", () => {
-  searchBox.val("");
-  $(".userList").html("");
-  userToAdd = null;
-});
-
-function getChatName(chatData) {
-  var chatName = chatData.chatName;
-
-  if (!chatName) {
-    var otherChatUsers = getOtherChatUsers(chatData.users);
-    var namesArray = otherChatUsers.map((user) => user.name);
-    chatName = namesArray.join(", ");
-  }
-
-  return chatName;
-}
-
-function getOtherChatUsers(users) {
-  if (users.length == 1) return users;
-
-  return users.filter((user) => user._id != userLoggedIn._id);
-}
-
 var typing = false;
 var lastTypingTime;
 
@@ -306,4 +193,118 @@ function markAllMessagesAsRead() {
     type: "PUT",
     success: () => refreshMessagesBadge(),
   });
+}
+
+// //ADDING A NEW MEMEBER TO A GROUP CHAT
+
+let timer;
+let userToAdd;
+
+const searchBox = $("#addNewUserModalTextBox");
+const addUser = $("#addNewUserModalButton");
+
+if (searchBox != null) {
+  searchBox.on("keydown", function () {
+    clearTimeout(timer);
+    const textbox = $(this);
+    let value = textbox.val();
+
+    if (value === "" && event.keyCode === 8) {
+      $(".userList").html("");
+      return;
+    }
+
+    timer = setTimeout(() => {
+      value = textbox.val().trim();
+
+      if (value === "") {
+        $(".userList").html("");
+      } else {
+        searchUsers(value);
+      }
+    }, 1000);
+  });
+}
+
+function searchUsers(searchTerm) {
+  $.get("/api/users", { search: searchTerm }, (results) => {
+    outputSelectableUsers(results, $(".userList"));
+  });
+}
+
+function outputSelectableUsers(results, container) {
+  container.html("");
+
+  results.forEach((result) => {
+    if (users.some((user) => user._id === result._id)) {
+      return;
+    }
+
+    const html = createUserHtml(result);
+    const element = $(html);
+    element.click(() => userSelected(result));
+
+    container.append(element);
+  });
+}
+
+function createUserHtml(userData) {
+  return `<div class='user'>
+                <div class='userImageContainer'>
+                    <img src='${userData.profilePic}'>
+                </div>
+                <div class='userDetailsContainer'>
+                    <div class='header'>
+                        <a href='/user-profile/${userData._id}'>${userData.name}</a>
+                        <span class='username'>@${userData.username}</span>
+                    </div>
+                </div>
+            </div>`;
+}
+
+function userSelected(user) {
+  searchBox.val(user.name).focus();
+  $(".userList").html("");
+  userToAdd = user;
+}
+
+if (addUser != null) {
+  addUser.on("click", () => {
+    if (userToAdd == null) {
+      alert("No user selected. Please try again");
+      return;
+    } else {
+      $.ajax({
+        url: `/api/chats/${chatId}/addNewMember`,
+        data: userToAdd,
+        type: "PUT",
+        success: () => location.reload(),
+        error: () => confirm("Could not update. Please try again"),
+      });
+    }
+  });
+}
+
+$("#addNewUserModal").on("hidden.bs.modal", () => {
+  searchBox.val("");
+  $(".userList").html("");
+  userToAdd = null;
+});
+
+function getChatName(chatData) {
+  var chatName = chatData.chatName;
+
+  if (!chatName) {
+    var otherChatUsers = getOtherChatUsers(chatData.users);
+    var namesArray = otherChatUsers.map((user) => user.name);
+    chatName = namesArray.join(", ");
+  }
+
+  return chatName;
+}
+
+function getOtherChatUsers(users) {
+  if (users.length == 1) return users;
+
+  return users.filter((user) => user._id != userLoggedIn._id);
 }
