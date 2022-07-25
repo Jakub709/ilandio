@@ -18,6 +18,10 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.grid--two-cols {
+  grid-template-columns: 2fr 1fr;
+}
+
 .grid--2-cols-not-same {
   grid-template-columns: 3fr 1fr;
 }
@@ -287,6 +291,10 @@ textarea {
   }
 
   .grid--2-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .grid--two-cols {
     grid-template-columns: 1fr;
   }
 

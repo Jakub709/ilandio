@@ -22,7 +22,7 @@ header.header
     img.header__img(src='images/ilandio_logo.png' alt='')
     p.header__logo M&uring;j profil
     p.header__logo__second
-      i &bdquo;J&aacute; u&ccaron;&iacute;m tebe, ty u&ccaron;&iacute;&scaron; m&ecaron;.&ldquo;
+      i &bdquo;J&aacute; u&ccaron;&iacute;m tebe, jiný učí mě.
     .header__toggle
       i#header-toggle.bx.bx-menu
 // ========== NAV ========== //
@@ -82,13 +82,10 @@ main
             div
               .inputField-data
                 p.heading-input Z&aacute;kladn&iacute; &uacute;daje
-                .grid.grid-row-gap.grid--3-cols
+                .grid.grid-row-gap.grid--2-cols
                   .form-item
                     input#name.input-field(type='text' name='name' placeholder='')
                     label(for='name') Jm&eacute;no a p&rcaron;&iacute;jmen&iacute;
-                  .form-item
-                    input#email.input-field(type='text' name='email' placeholder='')
-                    label(for='email') Email
                   .form-item
                     input#hex.input-field(type='text' name='hex' placeholder='hex, např. #ffffff')
                     label(for='hex') Barva pozad&iacute; profilu
@@ -133,12 +130,11 @@ main
                     label(for='region') Region
             input#updateMain.button-1.button-1-colors(type='submit' value='Uložit')
         .my-profile
-          .my-foto.grid.grid--3-cols
+          .my-foto.grid.grid--2-cols
             .left-side
               p.heading-input Fotografie
               img.avatar.img-circle.img-thumbnail(src='http://ssl.gstatic.com/accounts/ui/avatar_2x.png' alt='avatar')
               +createImageUploadModal()
-            .middle-side
             .right-side
       .my-profile.tab
           form.inputField

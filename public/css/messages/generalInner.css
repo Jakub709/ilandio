@@ -114,7 +114,7 @@ img {
 
 .header__logo__second {
   color: var(--main-color);
-  font-size: var(--high--font-size);
+  font-size: var(--normal--font-size);
   display: none;
 }
 

@@ -74,6 +74,16 @@
     position: absolute;  */
 }
 
+.titlePost {
+  font-size: 1.5rem;
+  color: #374a69;
+  font-weight: 600;
+}
+
+.nameUser {
+  color: #374a69;
+}
+
 .my-post-tags {
   margin-top: 0.5rem;
   /* display: grid;

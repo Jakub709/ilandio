@@ -12,6 +12,10 @@
   .heading-primary {
     font-size: 4.4rem;
   }
+
+  .section-featured {
+    display: none;
+  }
 }
 
 /**************************/

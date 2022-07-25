@@ -73,7 +73,7 @@ submitButton.addEventListener("click", function (e) {
     Swal.fire({
       icon: "error",
       title: "Pozor chyba",
-      text: `Vyplňte prosím všechna pole.`,
+      text: `Vyplň prosím všechna pole.`,
       confirmButtonColor: "#F27474",
       confirmButtonText: "Rozumím",
     });
@@ -105,6 +105,15 @@ submitButton.addEventListener("click", function (e) {
           icon: "error",
           title: "Chyba",
           text: `Zkuste to prosím znovu.`,
+          confirmButtonColor: "#F27474",
+          confirmButtonText: "Rozumím",
+        });
+        return;
+      } else if (postData.status === "fail") {
+        Swal.fire({
+          icon: "error",
+          title: "Neaktivní účet",
+          text: postData.errorMessage,
           confirmButtonColor: "#F27474",
           confirmButtonText: "Rozumím",
         });

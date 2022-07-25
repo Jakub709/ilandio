@@ -33,21 +33,29 @@ router.post("/", async (req, res, next) => {
     } else if (!nameTransfer) {
       const noNameTransfer = {
         userLoggedIn: updatedSender,
-        errorMessage: "Uveďte jméno příjemce",
+        errorMessage: "Uveď prosím jméno příjemce",
         status: "fail",
       };
       res.status(200).send(noNameTransfer);
     } else if (!moneyTransfer) {
       const noMoneyTransfer = {
         userLoggedIn: updatedSender,
-        errorMessage: "Uveďte prosím částku",
+        errorMessage: "Uveď prosím částku",
         status: "fail",
       };
       res.status(200).send(noMoneyTransfer);
     } else if (moneyTransfer > updatedSender.accountBalance * 1) {
       const noMoney = {
         userLoggedIn: updatedSender,
-        errorMessage: "Bohužel nemáte na účtě dostatek Educoinů",
+        errorMessage: "Bohužel nemáš na účtě dostatek Educoinů",
+        status: "fail",
+      };
+      res.status(200).send(noMoney);
+    } else if (updatedSender.acctivated == "no") {
+      const noMoney = {
+        userLoggedIn: updatedSender,
+        errorMessage:
+          "Tvůj účet není aktivní. Přihlas se na email a aktivuj jej pomocí odkazu, který Ti byl při registraci odeslán. ",
         status: "fail",
       };
       res.status(200).send(noMoney);

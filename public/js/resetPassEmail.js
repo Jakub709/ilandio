@@ -21,37 +21,31 @@ btnNavEl.addEventListener("click", function () {
 // tabs(0);
 
 // Tlačítko
-const updatePassword = document.getElementById("btn");
+const resetPassword = document.querySelector(".btn");
 
 // Input fields
-const id = document.getElementById("id");
-const password = document.getElementById("password");
-const passwordConf = document.getElementById("passwordConf");
+const email = document.getElementById("email");
 
 // Funkce
-updatePassword.addEventListener("click", function (e) {
+resetPassword.addEventListener("click", function (e) {
   e.preventDefault();
   const data = {
-    id: id.value,
-    password: password.value,
-    passwordConf: passwordConf.value,
+    email: email.value,
   };
   //console.log(data);
-  $.post("/reset-password", data, (postData, status, xhr) => {
+  $.post("/reset-pass-email", data, (postData, status, xhr) => {
     if (!postData) {
       return;
     } else {
       //console.log(postData);
-      id.value = "";
-      password.value = "";
-      passwordConf.value = "";
+      email.value = "";
       if (postData.status == "success") {
         Swal.fire({
           icon: "success",
-          title: "Změna provedena",
-          text: "Nové heslo bylo vytvořeno, přihlaste se.",
+          title: "Instrukce odeslány",
+          text: "Přejdi do svého emailu a změň si heslo.",
           confirmButtonColor: "#51BE7C",
-          confirmButtonText: "Hotovo",
+          confirmButtonText: "Jdu na to",
         });
       } else {
         Swal.fire({

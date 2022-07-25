@@ -29,7 +29,7 @@ $(document).on("click", (e) => {
           url: `/api/chats/${chatId}/leaveChat`,
           type: "PUT",
           success: () => location.reload(),
-          error: () => confirm("Nelze aktualizovat. Prosím zkuste znovu."),
+          error: () => confirm("Nelze aktualizovat. Prosím zkus to znovu."),
         });
       }
     }

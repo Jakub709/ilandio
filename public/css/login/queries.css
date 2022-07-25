@@ -12,6 +12,10 @@
   .heading-primary {
     font-size: 4.4rem;
   }
+
+  .section-featured {
+    display: none;
+  }
 }
 
 /**************************/
@@ -160,6 +164,10 @@
 
   .logos img {
     height: 1.2rem;
+  }
+
+  .error-image {
+    max-width: 35rem;
   }
 }
 

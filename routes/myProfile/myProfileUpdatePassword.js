@@ -41,7 +41,7 @@ router.post("/", async (req, res) => {
   } catch (err) {
     res.status(404).send({
       userLoggedIn: req.session.user,
-      errorMessage: "Chyba, zkuste to prosím znovu.",
+      errorMessage: "Chyba, zkus to prosím znovu.",
       status: "fail",
     });
   }

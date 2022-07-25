@@ -46,13 +46,16 @@ app.get("/error", async (req, res, next) => {
 });
 
 // Authentication
-const loginRoute = require("./routes/authentication/loginRoutes");
+const loginRoutes = require("./routes/authentication/loginRoutes");
 const registerRoutes = require("./routes/authentication/registerRoutes");
-const logoutRoute = require("./routes/authentication/logout");
-const resetPasswordRoutes = require("./routes/authentication/resetPasswordRoutes");
+const accountConfirmedRoutes = require("./routes/authentication/accountConfirmedRoutes");
+const logoutRoutes = require("./routes/authentication/logout");
+const resetPassRoutes = require("./routes/authentication/resetPassRoutes");
+const resetPassEmailRoutes = require("./routes/authentication/resetPassEmailRoutes");
 
-app.use("/login", middleware.isLoggedIN, loginRoute);
+app.use("/login", middleware.isLoggedIN, loginRoutes);
 app.use("/register", middleware.isLoggedIN, registerRoutes);
+app.use("/account-confirmed", accountConfirmedRoutes);
 app.get("/after-reg", async (req, res, next) => {
   res.status(200).render("after-reg");
 });
@@ -62,8 +65,9 @@ app.get("/kontakt", async (req, res, next) => {
 app.get("/gdpr", async (req, res, next) => {
   res.status(200).render("gdpr");
 });
-app.use("/logout", logoutRoute);
-app.use("/reset-password", resetPasswordRoutes);
+app.use("/logout", logoutRoutes);
+app.use("/reset-pass", resetPassRoutes);
+app.use("/reset-pass-email", resetPassEmailRoutes);
 
 // Posts
 const postsSearchRoutes = require("./routes/posts/postsSearchRoutes");

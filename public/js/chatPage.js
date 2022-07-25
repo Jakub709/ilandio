@@ -255,8 +255,8 @@ function createUserHtml(userData) {
                 </div>
                 <div class='userDetailsContainer'>
                     <div class='header'>
-                        <a href='/user-profile/${userData._id}'>${userData.name}</a>
-                        <span class='username'>@${userData.username}</span>
+                        <span>${userData.name}</span>
+                        <span class='username'>@${userData.job}</span>
                     </div>
                 </div>
             </div>`;

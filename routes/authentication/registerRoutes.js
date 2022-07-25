@@ -4,6 +4,7 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const User = require("../../schemas/UserSchema");
+const nodemailer = require("nodemailer");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -24,7 +25,7 @@ router.post("/", async (req, res, next) => {
     const username = req.body.username.trim();
     const email = req.body.email.trim();
     const emailDomena = email.split("@").pop();
-    const seznamDomen = ["seznam.cz", "is.muni.cz"];
+    const seznamDomen = ["seznam.cz", "is.muni.cz", "gmail.com"];
     const password = req.body.password;
     const passwordConf = req.body.passwordConf;
     const passwordLength = password.length;
@@ -45,6 +46,33 @@ router.post("/", async (req, res, next) => {
           // Uživatel nenalezen
           const data = req.body;
           data.password = await bcrypt.hash(password, 10);
+
+          const emailText = `<b>iLandio Tě vítá!</b> <br><br> Stačí kliknout na tento <a href=https://ilandio.cz/account-confirmed/${email}> odkaz</a> a tvůj účet bude aktivován. <br><br>Krásný den přeje <br> <b>Jakub</b>`;
+
+          // Nodemailer - odeslání potvrzovacího emailu
+          const transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+              user: "solnickajakub@gmail.com",
+              pass: "abdibgqbalmovmvn",
+            },
+          });
+
+          const mailOptions = {
+            from: "solnickajakub@gmail.com",
+            to: email,
+            subject: "iLandio | Změna hesla",
+            html: emailText,
+          };
+
+          transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+              console.log(error);
+            } else {
+              console.log("Email sent: " + info.response);
+            }
+          });
+
           User.create(data).then((user) => {
             req.session.user = user;
             return res.redirect("/after-reg");
@@ -70,7 +98,7 @@ router.post("/", async (req, res, next) => {
       res.status(200).render("register", payload);
     }
   } catch (err) {
-    res.status(404).render("register", payload);
+    res.status(404).render("error");
   }
 });
 module.exports = router;

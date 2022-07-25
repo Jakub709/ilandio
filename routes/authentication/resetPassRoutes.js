@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 app.use(bodyParser.urlencoded({ extended: false }));
 
 router.get("/", async (req, res, next) => {
-  res.status(200).render("reset-password");
+  res.status(200).render("reset-pass");
 });
 
 router.post("/", async (req, res, next) => {
@@ -38,7 +38,8 @@ router.post("/", async (req, res, next) => {
       });
     } else {
       res.status(201).send({
-        errorMessage: "Hesla musí obsahovat 6 znaků, kód opište z emailu.",
+        errorMessage:
+          "Hesla musí obsahovat alespoň 6 znaků, kód opište z emailu.",
         status: "fail",
       });
     }

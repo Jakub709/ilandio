@@ -124,7 +124,8 @@
 .hero-description {
   font-size: 2.1rem;
   line-height: 1.6;
-  margin-bottom: 4.8rem;
+  margin-bottom: 1.8rem;
+  text-align: justify;
 }
 
 .blue {
@@ -168,7 +169,7 @@
 .users-text {
   font-size: 1.8rem;
   font-weight: 400;
-  text-align: center;
+  text-align: left;
 }
 
 .users-text span {
@@ -232,7 +233,7 @@ input::placeholder {
 }
 
 .logos img {
-  height: 3.2rem;
+  height: 5.2rem;
   filter: brightness(0);
   opacity: 50%;
 }
@@ -378,4 +379,21 @@ input::placeholder {
 
 .margin-top-3 {
   margin-top: 3rem;
+}
+
+/**************************/
+/* OTHER PAGES - NOT LOGIN */
+/**************************/
+.swal2-popup {
+  font-size: 1.6rem !important;
+}
+
+.error {
+  margin-top: 12rem;
+  text-align: center;
+}
+
+.run {
+  margin-top: 3rem;
+  text-align: center;
 }

@@ -138,11 +138,13 @@
           <% users.forEach(function(user) { %>
           <div id="my-posts" class="my-post">
             <div class="grid grid--2-cols-post">
-              <div class="my-post-mainImage">
+              <a class="my-post-mainImage" href="/user-profile/<%= user._id %>">
                 <img src="<%= user.profilePic %>" alt="user" />
-              </div>
+              </a>
               <div class="my-post-body">
-                <h4><%= user.name %></h4>
+                <a class="nameUser" href="/user-profile/<%= user._id %>"
+                  ><%= user.name %></a
+                >
                 <div class="social-buttons">
                   <a
                     href="http://www.facebook.com/<%= user.facebook %>"
@@ -192,7 +194,6 @@
                       />
                     </svg>
                   </a>
-                  <p>|</p>
                   <a
                     href="/user-profile/<%= user._id %>"
                     class="social-buttons__button social-button social-button--watch social-buttons-posts"
@@ -243,12 +244,8 @@
         </div>
         <div class="next-previous">
           <!-- url =  /posts-list?&type=nabídka-->
-          <a href="<%= url %>&page=<%= currentPage-1 %>"
-            ><%= textPrevious %></a
-          >
-          <a href="<%= url %>&page=<%= currentPage+1 %>"
-            ><%= textNext %></a
-          >
+          <a href="<%= url %>&page=<%= currentPage-1 %>"><%= textPrevious %></a>
+          <a href="<%= url %>&page=<%= currentPage+1 %>"><%= textNext %></a>
         </div>
       </div>
     </main>

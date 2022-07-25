@@ -39,13 +39,21 @@ router.post("/", async (req, res, next) => {
       group: req.body.group,
       environment: req.body.environment,
     };
-    //console.log(postData);
-    let newPost = await Post.create(postData);
-
-    res.status(201).send({
-      newPost: newPost,
-      status: "success",
-    });
+    //Ochrana před vložením příspěvku od neautorizovaného uživatele
+    if (req.session.user.acctivated === "yes") {
+      console.log(req.session.user.acctivated);
+      let newPost = await Post.create(postData);
+      res.status(201).send({
+        newPost: newPost,
+        status: "success",
+      });
+    } else {
+      res.status(201).send({
+        status: "fail",
+        errorMessage:
+          "Tvůj účet není aktivní. Přihlas se na email a aktivuj jej pomocí odkazu, který Ti byl při registraci odeslán. ",
+      });
+    }
   } catch (err) {
     res.status(400).send({
       status: "fail",
