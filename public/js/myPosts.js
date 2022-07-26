@@ -25,9 +25,7 @@ const createNewPost = function (postData) {
     </div>
     <div class="my-post-body">
       <h4>${postData.title}</h4>
-      <a href="/user-profile/${postData.postedByID}"
-        ><i>${postData.time}</i></a
-      >
+      <i>${postData.time}</i>
       <p class="my-post-content">${postData.content}</p>
     </div>
   </div>

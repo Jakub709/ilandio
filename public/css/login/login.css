@@ -188,6 +188,7 @@
 }
 
 input {
+  -webkit-appearance: none;
   width: 100%;
   padding: 1.5rem;
   margin: 0.5rem 0rem;
@@ -201,6 +202,7 @@ input {
 }
 
 input::placeholder {
+  -webkit-appearance: none;
   color: #374a69;
 }
 
