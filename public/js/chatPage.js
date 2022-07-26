@@ -271,7 +271,7 @@ function userSelected(user) {
 if (addUser != null) {
   addUser.on("click", () => {
     if (userToAdd == null) {
-      alert("No user selected. Please try again");
+      alert("Žádný uživatel nevybrán. Zkus to prosím znovu.");
       return;
     } else {
       $.ajax({
@@ -279,7 +279,7 @@ if (addUser != null) {
         data: userToAdd,
         type: "PUT",
         success: () => location.reload(),
-        error: () => confirm("Could not update. Please try again"),
+        error: () => confirm("Nelze aktualizovat. Zkus to prosím znovu."),
       });
     }
   });

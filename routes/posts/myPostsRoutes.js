@@ -41,7 +41,7 @@ router.post("/", async (req, res, next) => {
     };
     //Ochrana před vložením příspěvku od neautorizovaného uživatele
     if (req.session.user.acctivated === "yes") {
-      console.log(req.session.user.acctivated);
+      //console.log(req.session.user.acctivated);
       let newPost = await Post.create(postData);
       res.status(201).send({
         newPost: newPost,

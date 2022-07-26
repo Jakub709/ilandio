@@ -24,14 +24,25 @@ $(document).on("click", (e) => {
   if (target.hasClass("leaveChat")) {
     if (target.data().id != null) {
       const chatId = target.data().id;
-      if (confirm("Chcete doopravdy smazat tento chat?")) {
-        $.ajax({
-          url: `/api/chats/${chatId}/leaveChat`,
-          type: "PUT",
-          success: () => location.reload(),
-          error: () => confirm("Nelze aktualizovat. Prosím zkus to znovu."),
-        });
-      }
+      Swal.fire({
+        icon: "question",
+        title: "Pozor",
+        text: "Chceš chat skutečně smazat?",
+        showCancelButton: true,
+        confirmButtonText: "Smazat",
+        cancelButtonText: "Rozhodně ne",
+        confirmButtonColor: "#147aed",
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `/api/chats/${chatId}/leaveChat`,
+            type: "PUT",
+            success: () => location.reload(),
+            error: () => confirm("Nelze aktualizovat. Prosím zkus to znovu."),
+          });
+        }
+      });
     }
     return false;
   }

@@ -13,10 +13,10 @@
 
     <!--========== CSS ==========-->
     <link
-    rel="stylesheet"
-    href="/css/general/generalInner.css
+      rel="stylesheet"
+      href="/css/general/generalInner.css
   "
-  />
+    />
     <link rel="stylesheet" href="/css/myPosts/myPosts.css" />
 
     <!--========== JQUERY a SWEET ==========-->
@@ -33,11 +33,7 @@
     <!--========== HEADER ==========-->
     <header class="header">
       <div class="header__container">
-        <img
-          src="/images/ilandio_logo.png"
-          alt=""
-          class="header__img"
-        />
+        <img src="/images/ilandio_logo.png" alt="" class="header__img" />
 
         <p class="header__logo">Moje příspěvky</p>
         <p class="header__logo__second">
@@ -142,7 +138,13 @@
                   <label for="title">Název příspěvku</label>
                 </div>
                 <div class="form-item">
-                  <input type="Number" id="price" placeholder="" min="0" required="" />
+                  <input
+                    type="Number"
+                    id="price"
+                    placeholder=""
+                    min="0"
+                    required=""
+                  />
                   <label for="price">Cena v EC</label>
                 </div>
               </div>
@@ -253,10 +255,7 @@
             <div class="my-post">
               <div class="grid grid--2-cols-post">
                 <div class="my-post-mainImage">
-                  <img
-                    src="<%= post.postedByProfilePic %>"
-                    alt="user"
-                  />
+                  <img src="<%= post.postedByProfilePic %>" alt="user" />
                 </div>
                 <div class="my-post-body">
                   <h4><%= post.title %></h4>
@@ -271,14 +270,12 @@
                   <span class="tag tag-one"><%= post.category %></span>
                   <span class="tag tag-two"><%= post.level %></span>
                   <span class="tag tag-two"><%= post.group %></span>
-                  <span class="tag tag-two"
-                    ><%= post.environment %></span
-                  >
+                  <span class="tag tag-two"><%= post.environment %></span>
                   <span class="tag tag-three"><%= post.price %> EC</span>
                 </div>
               </div>
               <div class="my-post-delete">
-                <a href=/post-delete/<%=post._id%>>🗑️</a>
+                <a onclick="confirmPopUp(`/post-delete/<%=post._id%>`)">🗑️</a>
               </div>
             </div>
             <% }); %>
@@ -286,8 +283,7 @@
         </div>
       </div>
     </main>
-    
-    
+
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"

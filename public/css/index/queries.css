@@ -249,6 +249,10 @@
   .users-imgs-container {
     margin-top: 6rem;
   }
+
+  .small-screen {
+    display: none;
+  }
 }
 
 /**************************/

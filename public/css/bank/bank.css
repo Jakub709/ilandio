@@ -106,6 +106,7 @@ textarea {
 }
 
 .form-item textarea {
+  -webkit-appearance: none;
   height: 7.5rem;
   padding-top: 1rem;
 }

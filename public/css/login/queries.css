@@ -215,6 +215,10 @@
   .logos img {
     height: 1.2rem;
   }
+
+  .small-screen {
+    display: none;
+  }
 }
 
 /**************************/

@@ -14,6 +14,23 @@ const level = document.getElementById("level");
 const group = document.getElementById("group");
 const environment = document.getElementById("environment");
 
+const confirmPopUp = function (link) {
+  Swal.fire({
+    icon: "question",
+    title: "Pozor",
+    text: "Chceš příspěvek skutečně smazat?",
+    showCancelButton: true,
+    confirmButtonText: "Smazat",
+    cancelButtonText: "Rozhodně ne",
+    confirmButtonColor: "#147aed",
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      window.location.href = link;
+    }
+  });
+};
+
 const createNewPost = function (postData) {
   const html = `<div class="my-post">
   <div class="grid grid--2-cols-post">
@@ -41,7 +58,7 @@ const createNewPost = function (postData) {
     </div>
   </div>
   <div class="my-post-delete">
-      <a href="/post-delete/${postData._id}">Smazat</a>
+      <a href="/post-delete/${postData._id}">🗑️</a>
   </div>
 </div>`;
   myPostsContainer.insertAdjacentHTML("afterbegin", html);

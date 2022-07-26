@@ -5,7 +5,7 @@ const emailTransfer = document.getElementById("emailTransfer");
 const nameTransfer = document.getElementById("nameTransfer");
 const movements = document.querySelector(".movements");
 const labelBalance = document.querySelector(".balance__value");
-const errorMessage = document.querySelector(".error_message");
+//const errorMessage = document.querySelector(".error_message");
 const labelSumIn = document.querySelector(".summary__value--in");
 const labelSumOut = document.querySelector(".summary__value--out");
 const labelDate = document.querySelector(".date");
@@ -28,7 +28,7 @@ btnTransfer.addEventListener("click", function (e) {
       return;
     } else {
       labelBalance.textContent = postData.userLoggedIn.accountBalance + ` EC`;
-      errorMessage.textContent = postData.errorMessage;
+      //errorMessage.textContent = postData.errorMessage;
       const userDB = postData.userLoggedIn;
       createMovements(userDB);
       calcDisplaySummary(postData.userLoggedIn);
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     createMovements(bankCoins.userLoggedIn);
     calcDisplaySummary(bankCoins.userLoggedIn);
     labelBalance.textContent = bankCoins.userLoggedIn.accountBalance + ` EC`;
-    errorMessage.textContent = bankCoins.errorMessage;
+    //errorMessage.textContent = bankCoins.errorMessage;
   });
 });
 
