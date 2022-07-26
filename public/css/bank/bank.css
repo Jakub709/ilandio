@@ -33,6 +33,7 @@
 }
 
 .button-1 {
+  -webkit-appearance: none;
   background-color: var(--button-color);
   border-radius: 0.35rem;
   border-style: none;

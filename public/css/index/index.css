@@ -166,6 +166,7 @@
 
 .errorMessage,
 .users-text {
+  -webkit-appearance: none;
   font-size: 1.8rem;
   font-weight: 400;
   text-align: center;
