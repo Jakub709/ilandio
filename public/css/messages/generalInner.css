@@ -126,6 +126,7 @@ img {
 }
 
 .header__input {
+  -webkit-appearance: none;
   width: 100%;
   border: none;
   outline: none;
@@ -133,6 +134,7 @@ img {
 }
 
 .header__input::placeholder {
+  -webkit-appearance: none;
   font-family: var(--body-font);
   color: var(--main-color);
 }

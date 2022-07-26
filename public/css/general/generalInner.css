@@ -117,6 +117,7 @@ img {
 }
 
 .header__input {
+  -webkit-appearance: none;
   width: 100%;
   border: none;
   outline: none;
@@ -124,6 +125,7 @@ img {
 }
 
 .header__input::placeholder {
+  -webkit-appearance: none;
   font-family: var(--body-font);
   color: var(--main-color);
 }
@@ -149,8 +151,6 @@ img {
   z-index: var(--z-fixed);
   transition: 0.4s;
 }
-
-
 
 .nav__container {
   height: 100%;

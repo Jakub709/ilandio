@@ -240,6 +240,7 @@
 }
 
 .modal input::placeholder {
+  -webkit-appearance: none;
   color: #aaa;
 }
 

@@ -88,6 +88,7 @@
 
 .form-item input,
 textarea {
+  -webkit-appearance: none;
   width: 100%;
   padding: 0.5rem;
   margin: 0rem 0rem;
