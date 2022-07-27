@@ -39,6 +39,7 @@
 }
 
 .button-1 {
+  -webkit-appearance: none;
   border-radius: 0.25rem;
   border-style: none;
   box-sizing: border-box;

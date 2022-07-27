@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const User = require("../../schemas/UserSchema");
 const nodemailer = require("nodemailer");
+const dotenv = require("dotenv");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -47,21 +48,22 @@ router.post("/", async (req, res, next) => {
           const data = req.body;
           data.password = await bcrypt.hash(password, 10);
 
-          const emailText = `<b>iLandio Tě vítá!</b> <br><br> Stačí kliknout na tento <a href=https://ilandio.cz/account-confirmed/${email}> odkaz</a> a tvůj účet bude aktivován. <br><br>Krásný den přeje <br> <b>Jakub</b>`;
+          const emailText = `<b>iLandio Tě vítá!</b> <br><br> Stačí kliknout na tento <a href=https://ilandio.herokuapp.com/account-confirmed/${email}> odkaz</a> a tvůj účet bude aktivován. <br><br>Krásný den přeje <br> <b>Jakub</b>`;
 
           // Nodemailer - odeslání potvrzovacího emailu
+          require("dotenv").config();
           const transporter = nodemailer.createTransport({
-            service: "gmail",
+            host: "smtp.seznam.cz",
             auth: {
-              user: "solnickajakub@gmail.com",
-              pass: "abdibgqbalmovmvn",
+              user: "info@ilandio.cz",
+              pass: process.env.PASSWORD,
             },
           });
 
           const mailOptions = {
-            from: "solnickajakub@gmail.com",
+            from: "info@ilandio.cz",
             to: email,
-            subject: "iLandio | Změna hesla",
+            subject: "Vítej v iLandiu ",
             html: emailText,
           };
 
