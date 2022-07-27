@@ -82,10 +82,13 @@ main
             div
               .inputField-data
                 p.heading-input Z&aacute;kladn&iacute; &uacute;daje
-                .grid.grid-row-gap.grid--2-cols
+                .grid.grid-row-gap.grid--3-cols
                   .form-item
                     input#name.input-field(type='text' name='name' placeholder='')
                     label(for='name') Jm&eacute;no a p&rcaron;&iacute;jmen&iacute;
+                  .form-item
+                    input#email.input-field(type='text' name='email' placeholder='')
+                    label(for='email') Email
                   .form-item
                     input#hex.input-field(type='text' name='hex' placeholder='hex, např. #ffffff')
                     label(for='hex') Barva pozad&iacute; profilu

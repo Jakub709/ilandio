@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
   try {
     // Data z ajaxu
     const name = req.body.name;
-    const email = req.body.email;
+    let email = req.body.email;
     const facebook = req.body.facebook;
     const linkedin = req.body.linkedin;
     const github = req.body.github;
@@ -18,6 +18,13 @@ router.post("/", async (req, res) => {
     const position = req.body.position;
     const region = req.body.region;
     const hex = req.body.hex;
+
+    // Ochrana před nepovoleným emailem
+    const emailDomena = email.split("@").pop();
+    const seznamDomen = ["seznam.cz", "is.muni.cz", "gmail.com"];
+    if (!seznamDomen.includes(emailDomena)) {
+      email = req.session.user.email;
+    }
 
     const updatedUser = await User.findByIdAndUpdate(
       req.session.user._id,
