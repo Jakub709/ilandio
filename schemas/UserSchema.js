@@ -21,7 +21,7 @@ const UserSchema = new Schema(
     moneyTransfer: { type: Array, default: 500 },
     nameTransfer: { type: Array, default: "Počáteční vklad" },
     dateTransfer: { type: Array, default: new Date() },
-    usernameTransfer: { type: Array, default: "ilandiobank" },
+    usernameTransfer: { type: Array, default: "iLandio" },
     followers: { type: Array },
     following: { type: Array },
   },

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 class Database {
   constructor() {
@@ -6,9 +7,7 @@ class Database {
   }
   connect() {
     mongoose
-      .connect(
-        "mongodb+srv://JakubSolnicka:bubicekakropolis709@akropoliscluster.brkoy.mongodb.net/dataDB?retryWrites=true&w=majority"
-      )
+      .connect(process.env.MONGODB)
       .then(() => console.log("Database is connected"))
       .catch((err) => console.log("Database connnection error: " + err));
   }

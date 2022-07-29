@@ -148,7 +148,7 @@
               <h3 class="user-name"><%= userProfile.name %></h3>
               <div class="address">
                 <span id="country" class="country"
-                  ><%= userProfile.region %></span
+                  >@<%= userProfile.username %></span
                 >
               </div>
             </div>
@@ -165,6 +165,7 @@
               <div class="profile-side">
                 <h3><%= userProfile.job %></h3>
                 <p class="profile-side-position"><%= userProfile.position %></p>
+                <p class="profile-side-position"><%= userProfile.region %></p>
                 <div class="social-buttons">
                   <a
                     href="http://www.facebook.com/<%= userProfile.facebook %>"
@@ -215,7 +216,6 @@
                     </svg>
                   </a>
                 </div>
-                <p class="email">@<%= userProfile.username %></p>
                 <div class="profile-btn">
                   <a
                     href="/messages/<%= userProfile._id %>"
