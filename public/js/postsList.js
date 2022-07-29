@@ -15,9 +15,12 @@ const csharp = document.getElementById("csharp");
 const cplusplus = document.getElementById("cplusplus");
 const php = document.getElementById("php");
 const swiftKotlin = document.getElementById("swift/kotlin");
-const datovaAnalyza = document.getElementById("datovaAnalyza");
+const statistika = document.getElementById("statistika");
+const r = document.getElementById("r");
+const matlab = document.getElementById("matlab");
 const ruby = document.getElementById("ruby");
 const devOps = document.getElementById("devOps");
+const go = document.getElementById("go");
 const testovani = document.getElementById("testovani");
 const ostatni = document.getElementById("ostatni");
 
@@ -84,14 +87,23 @@ submitButton.addEventListener("click", function (e) {
   if (swiftKotlin.checked) {
     filterString += `&category=swift/kotlin`;
   }
-  if (datovaAnalyza.checked) {
-    filterString += `&category=datová-analýza`;
+  if (statistika.checked) {
+    filterString += `&category=statistika`;
+  }
+  if (r.checked) {
+    filterString += `&category=r`;
+  }
+  if (matlab.checked) {
+    filterString += `&category=matlab`;
   }
   if (ruby.checked) {
     filterString += `&category=ruby`;
   }
   if (devOps.checked) {
     filterString += `&category=devops`;
+  }
+  if (go.checked) {
+    filterString += `&category=go`;
   }
   if (testovani.checked) {
     filterString += `&category=testovaní`;

@@ -57,10 +57,10 @@ const createNewPost = function (postData) {
       <span class="tag tag-three">${postData.price} EC</span>
     </div>
   </div>
-  <div class="my-post-delete">
-      <a href="/post-delete/${postData._id}">🗑️</a>
+    <div class="my-post-delete">
+    <a onclick=confirmPopUp("/post-delete/${postData._id}")>🗑️</a>
   </div>
-</div>`;
+  </div>`;
   myPostsContainer.insertAdjacentHTML("afterbegin", html);
 };
 
