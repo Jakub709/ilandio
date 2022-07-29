@@ -12,7 +12,7 @@ router.get("/:id", async (req, res) => {
   try {
     await Post.findByIdAndDelete(req.params.id);
     const myPosts = await Post.find({
-      postedByEmail: req.session.user.email,
+      postedByUsername: req.session.user.username,
     }).sort({ createdAt: -1 });
     res.status(200).render("my-posts", {
       posts: myPosts,

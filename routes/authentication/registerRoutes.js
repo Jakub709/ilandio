@@ -26,7 +26,7 @@ router.post("/", async (req, res, next) => {
     const username = req.body.username.trim();
     const email = req.body.email.trim();
     const emailDomena = email.split("@").pop();
-    const seznamDomen = ["seznam.cz", "is.muni.cz", "gmail.com"];
+    const seznamDomen = ["seznam.cz", "is.muni.cz", "gmail.com", "ilandio.cz"];
     const password = req.body.password;
     const passwordConf = req.body.passwordConf;
     const passwordLength = password.length;
@@ -48,35 +48,37 @@ router.post("/", async (req, res, next) => {
           const data = req.body;
           data.password = await bcrypt.hash(password, 10);
 
-          const emailText = `<b>iLandio Tě vítá!</b> <br><br> Stačí kliknout na tento <a href=https://ilandio.herokuapp.com/account-confirmed/${email}> odkaz</a> a tvůj účet bude aktivován. <br><br>Krásný den přeje <br> <b>Jakub</b>`;
-
-          // Nodemailer - odeslání potvrzovacího emailu
-          require("dotenv").config();
-          const transporter = nodemailer.createTransport({
-            host: "smtp.seznam.cz",
-            auth: {
-              user: "info@ilandio.cz",
-              pass: process.env.PASSWORD,
-            },
-          });
-
-          const mailOptions = {
-            from: "info@ilandio.cz",
-            to: email,
-            subject: "Vítej v iLandiu ",
-            html: emailText,
-          };
-
-          transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-              console.log(error);
-            } else {
-              console.log("Email sent: " + info.response);
-            }
-          });
-
+          // Uživatel vytvořen
           User.create(data).then((user) => {
             req.session.user = user;
+            const id = req.session.user._id;
+
+            // Potvrzovací email
+            const emailText = `<b>iLandio Tě vítá!</b> <br><br> Stačí kliknout na tento <a href=https://ilandio.herokuapp.com/account-confirmed/${id}> odkaz</a> a tvůj účet bude aktivován. <br><br>Krásný den přeje <br> <b>Jakub</b>`;
+
+            require("dotenv").config();
+            const transporter = nodemailer.createTransport({
+              host: "smtp.seznam.cz",
+              auth: {
+                user: "info@ilandio.cz",
+                pass: process.env.PASSWORD,
+              },
+            });
+
+            const mailOptions = {
+              from: "info@ilandio.cz",
+              to: email,
+              subject: "Vítej v iLandiu ",
+              html: emailText,
+            };
+
+            transporter.sendMail(mailOptions, function (error, info) {
+              if (error) {
+                console.log(error);
+              } else {
+                console.log("Email sent: " + info.response);
+              }
+            });
             return res.redirect("/after-reg");
           });
         } else {
@@ -92,7 +94,7 @@ router.post("/", async (req, res, next) => {
         }
       } else {
         payload.errorMessage =
-          "⚠ Uveďte email vaší instituce, která je do Elandia zapojena.";
+          "⚠ Uveď prosím email tvé instituce, která je do iLandia zapojena.";
         res.status(200).render("register", payload);
       }
     } else {

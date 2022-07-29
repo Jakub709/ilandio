@@ -6,9 +6,9 @@ const User = require("../../schemas/UserSchema");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-router.get("/:email", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   const acctivatedUser = await User.findOneAndUpdate(
-    { email: req.params.email },
+    { _id: req.params.id },
     {
       acctivated: "yes",
     },

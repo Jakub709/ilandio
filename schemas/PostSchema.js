@@ -10,7 +10,7 @@ const PostSchema = new Schema(
     postedByProfilePic: { type: String, default: "/images/profilePic.png" },
     postedByName: { type: String },
     postedByID: { type: String },
-    postedByEmail: { type: String },
+    postedByUsername: { type: String },
     type: { type: String, required: true },
     category: { type: String, required: true },
     level: { type: String, trim: true },

@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 router.get("/", async (req, res) => {
   try {
     const myPosts = await Post.find({
-      postedByEmail: req.session.user.email,
+      postedByUsername: req.session.user.username,
     }).sort({ createdAt: -1 });
 
     res.status(200).render("my-posts", {
@@ -31,7 +31,7 @@ router.post("/", async (req, res, next) => {
       price: req.body.price,
       postedByName: req.session.user.name,
       postedByID: req.session.user._id,
-      postedByEmail: req.session.user.email,
+      postedByUsername: req.session.user.username,
       postedByProfilePic: req.session.user.profilePic,
       type: req.body.type,
       category: req.body.category,

@@ -16,13 +16,13 @@ router.get("/", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     // Odesílatel/Příjemce
-    const emailTransfer = req.body.emailTransfer;
-    const senderEmail = req.session.user.email;
+    const usernameTransfer = req.body.usernameTransfer;
+    const senderUsername = req.session.user.username;
     const nameTransfer = req.body.nameTransfer.trim();
     const moneyTransfer = Math.abs(req.body.moneyTransfer.trim() * 1);
     const updatedSender = await User.findById(req.session.user._id);
 
-    const receiverConfirmed = await User.findOne({ email: emailTransfer });
+    const receiverConfirmed = await User.findOne({ username: usernameTransfer });
     if (!receiverConfirmed) {
       const noReceiver = {
         userLoggedIn: updatedSender,
@@ -62,13 +62,13 @@ router.post("/", async (req, res, next) => {
     } else {
       //Update databáze
       const receiverDB = await User.findOneAndUpdate(
-        { email: emailTransfer },
+        { username: usernameTransfer },
         {
           $push: {
             moneyTransfer: moneyTransfer,
             nameTransfer: updatedSender.name,
             dateTransfer: new Date(),
-            emailTransfer: senderEmail,
+            usernameTransfer: senderUsername,
           },
         },
         {
@@ -77,13 +77,13 @@ router.post("/", async (req, res, next) => {
         }
       );
       const senderDB = await User.findOneAndUpdate(
-        { email: senderEmail },
+        { username: senderUsername },
         {
           $push: {
             moneyTransfer: -moneyTransfer,
             nameTransfer: nameTransfer,
             dateTransfer: new Date(),
-            emailTransfer: emailTransfer,
+            usernameTransfer: usernameTransfer,
           },
         },
         {

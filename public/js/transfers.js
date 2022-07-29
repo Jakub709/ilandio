@@ -1,7 +1,7 @@
 // variables
 const btnTransfer = document.querySelector(".button-1");
 const moneyTransfer = document.getElementById("moneyTransfer");
-const emailTransfer = document.getElementById("emailTransfer");
+const usernameTransfer = document.getElementById("usernameTransfer");
 const nameTransfer = document.getElementById("nameTransfer");
 const movements = document.querySelector(".movements");
 const labelBalance = document.querySelector(".balance__value");
@@ -19,7 +19,7 @@ btnTransfer.addEventListener("click", function (e) {
   e.preventDefault();
   const data = {
     moneyTransfer: moneyTransfer.value,
-    emailTransfer: emailTransfer.value,
+    usernameTransfer: usernameTransfer.value,
     nameTransfer: nameTransfer.value,
   };
 
@@ -33,7 +33,7 @@ btnTransfer.addEventListener("click", function (e) {
       createMovements(userDB);
       calcDisplaySummary(postData.userLoggedIn);
       moneyTransfer.value = "";
-      emailTransfer.value = "";
+      usernameTransfer.value = "";
       nameTransfer.value = "";
       if (postData.status == "success") {
         Swal.fire({
@@ -79,13 +79,13 @@ const createMovements = function (userDB) {
     const date = new Date(userDB.dateTransfer[i]);
     const displayDate = formatMovementDate(date, "cs-CZ");
     const nameTransfer = userDB.nameTransfer[i];
-    const emailTransfer = userDB.emailTransfer[i];
+    const usernameTransfer = userDB.usernameTransfer[i];
     const html = `
     <li class="table-row">
     <div class="col col-1" data-label="ID:">${i + 1}</div>
     <div class="col col-2 table-row--${type}" data-label="Jméno:">${nameTransfer}</div>
     <div class="col col-3 table-row--${type}" data-label="Částka:">${mov} EC</div>
-    <div class="col col-4" data-label="Email:"><a href="/user-profile-email/${emailTransfer}">${emailTransfer}</a></div>
+    <div class="col col-4" data-label="Uživatelské jméno:"><a href="/user-profile-username/${usernameTransfer}">${usernameTransfer}</a></div>
     <div class="col col-5" data-label="Datum:">${displayDate}</div>
     </li>`;
     movements.insertAdjacentHTML("afterbegin", html);

@@ -7,15 +7,15 @@ const Post = require("../../schemas/PostSchema");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-router.get("/:email", async (req, res, next) => {
+router.get("/:username", async (req, res, next) => {
   try {
-    const clickedUserEmail = req.params.email;
+    const clickedUsername = req.params.username;
     const loggedinUserID = req.session.user._id;
     const loggedinUserEqualsClicked =
-      clickedUserEmail == loggedinUserID ? "disabled-button" : "active-button";
-    const userProfile = await User.findOne({ email: clickedUserEmail });
+      clickedUsername == loggedinUserID ? "disabled-button" : "active-button";
+    const userProfile = await User.findOne({ username: clickedUsername });
     // console.log(userProfile);
-    // console.log(clickedUserEmail);
+    // console.log(clickedUsername);
     let follow = "";
     let unfollow = "";
     if (userProfile.followers.includes(loggedinUserID)) {
@@ -27,7 +27,7 @@ router.get("/:email", async (req, res, next) => {
     }
 
     const postsUser = await Post.find({
-      postedByEmail: clickedUserEmail,
+      postedByUsername: clickedUsername,
     }).sort({ createdAt: -1 });
     // console.log(postsUser);
     const followersArray = userProfile.followers;

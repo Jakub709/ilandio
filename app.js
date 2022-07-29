@@ -88,14 +88,18 @@ const usersListRoutes = require("./routes/users/usersListRoutes");
 const userProfileRoutes = require("./routes/users/userProfileRoutes");
 const followRoutes = require("./routes/users/followRoutes");
 const unFollowRoutes = require("./routes/users/unFollowRoutes");
-const userProfileEmail = require("./routes/users/userProfileEmailRoutes");
+const userProfileUsernameRoutes = require("./routes/users/userProfileUsernameRoutes");
 
 app.use("/users-search", middleware.requireLogin, usersSearchRoutes);
 app.use("/users-list", middleware.requireLogin, usersListRoutes);
 app.use("/user-profile", middleware.requireLogin, userProfileRoutes);
 app.use("/follow", middleware.requireLogin, followRoutes);
 app.use("/unfollow", middleware.requireLogin, unFollowRoutes);
-app.use("/user-profile-email", middleware.requireLogin, userProfileEmail);
+app.use(
+  "/user-profile-username",
+  middleware.requireLogin,
+  userProfileUsernameRoutes
+);
 
 // Bank
 const transferRoute = require("./routes/bank/transferRoutes");
