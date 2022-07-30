@@ -7,6 +7,7 @@ const poptavka = document.getElementById("poptavka");
 const javaScript = document.getElementById("javaScript");
 const reactVueAngular = document.getElementById("reactVueAngular");
 const node = document.getElementById("node");
+const typescript = document.getElementById("typescript");
 const python = document.getElementById("python");
 const htmlcss = document.getElementById("htmlcss");
 const java = document.getElementById("java");
@@ -14,14 +15,18 @@ const databaze = document.getElementById("databaze");
 const csharp = document.getElementById("csharp");
 const cplusplus = document.getElementById("cplusplus");
 const php = document.getElementById("php");
-const swiftKotlin = document.getElementById("swift/kotlin");
+const swiftKotlinDart = document.getElementById("swift/kotlin/dart");
 const statistika = document.getElementById("statistika");
 const r = document.getElementById("r");
 const matlab = document.getElementById("matlab");
+const tableauPowerBI = document.getElementById("tableau/powerbi");
+const vba = document.getElementById("vba");
 const ruby = document.getElementById("ruby");
 const devOps = document.getElementById("devOps");
 const go = document.getElementById("go");
 const testovani = document.getElementById("testovani");
+const anglictina = document.getElementById("anglictina");
+const softSkills = document.getElementById("softSkills");
 const ostatni = document.getElementById("ostatni");
 
 // Level
@@ -63,6 +68,9 @@ submitButton.addEventListener("click", function (e) {
   if (node.checked) {
     filterString += `&category=node`;
   }
+  if (typescript.checked) {
+    filterString += `&category=typescript`;
+  }
   if (python.checked) {
     filterString += `&category=python`;
   }
@@ -84,8 +92,8 @@ submitButton.addEventListener("click", function (e) {
   if (php.checked) {
     filterString += `&category=php`;
   }
-  if (swiftKotlin.checked) {
-    filterString += `&category=swift/kotlin`;
+  if (swiftKotlinDart.checked) {
+    filterString += `&category=swift/kotlin/dart`;
   }
   if (statistika.checked) {
     filterString += `&category=statistika`;
@@ -95,6 +103,12 @@ submitButton.addEventListener("click", function (e) {
   }
   if (matlab.checked) {
     filterString += `&category=matlab`;
+  }
+  if (tableauPowerBI.checked) {
+    filterString += `&category=tableau/powerbi`;
+  }
+  if (vba.checked) {
+    filterString += `&category=vba`;
   }
   if (ruby.checked) {
     filterString += `&category=ruby`;
@@ -107,6 +121,12 @@ submitButton.addEventListener("click", function (e) {
   }
   if (testovani.checked) {
     filterString += `&category=testovaní`;
+  }
+  if (anglictina.checked) {
+    filterString += `&category=anglictina`;
+  }
+  if (softSkills.checked) {
+    filterString += `&category=softskills`;
   }
   if (ostatni.checked) {
     filterString += `&category=ostatní`;
