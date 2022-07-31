@@ -262,13 +262,13 @@ a.createbtn i {
 }
 
 .tab {
-  display: none;
-}
-
-.tab {
   padding: 1px 20px 20px 20px;
   width: 100%;
   text-align: center;
+}
+
+.tab-link {
+  color: #374a69;
 }
 
 /**************************/
