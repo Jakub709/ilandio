@@ -26,7 +26,12 @@ router.post("/", async (req, res, next) => {
     const username = req.body.username.trim();
     const email = req.body.email.trim();
     const emailDomena = email.split("@").pop();
-    const seznamDomen = ["seznam.cz", "is.muni.cz", "gmail.com", "ilandio.cz"];
+    const seznamDomen = [
+      "seznam.cz",
+      "mail.muni.cz",
+      "gmail.com",
+      "ilandio.cz",
+    ];
     const password = req.body.password;
     const passwordConf = req.body.passwordConf;
     const passwordLength = password.length;
@@ -94,7 +99,7 @@ router.post("/", async (req, res, next) => {
         }
       } else {
         payload.errorMessage =
-          "⚠ Uveď prosím email tvé instituce, která je do iLandia zapojena.";
+          "⚠ Uveď prosím email instituce, která je do iLandia zapojena.";
         res.status(200).render("register", payload);
       }
     } else {
