@@ -59,7 +59,7 @@ router.post("/", async (req, res, next) => {
             const id = req.session.user._id;
 
             // Potvrzovací email
-            const emailText = `<b>iLandio Tě vítá!</b> <br><br> Stačí kliknout na tento <a href=https://ilandio.herokuapp.com/account-confirmed/${id}> odkaz</a> a tvůj účet bude aktivován. <br><br>Krásný den přeje <br> <b>Jakub</b>`;
+            const emailText = `<b>iLandio Tě vítá!</b> <br><br> Stačí kliknout na tento <a href=https://ilandio.cz/account-confirmed/${id}> odkaz</a> a tvůj účet bude aktivován. <br><br>Krásný den přeje <br> <b>Jakub</b>`;
 
             require("dotenv").config();
             const transporter = nodemailer.createTransport({
