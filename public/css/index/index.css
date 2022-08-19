@@ -275,6 +275,12 @@
   /* z-index: 10; */
 }
 
+.linkKontakt {
+  text-decoration: none;
+  color: #147aed;
+  font-weight: 600;
+}
+
 /**************************/
 /* FEATURES */
 /**************************/

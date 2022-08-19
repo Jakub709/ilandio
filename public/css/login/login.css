@@ -407,3 +407,8 @@ input::placeholder {
   margin-top: 3rem;
   text-align: center;
 }
+
+.loginRedirect {
+  color: white;
+  text-decoration: none;
+}

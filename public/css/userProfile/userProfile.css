@@ -548,7 +548,7 @@ a {
   }
 
   .grid {
-    row-gap: 1rem;
+    row-gap: 0.25rem;
   }
 
   .grid--3-cols {

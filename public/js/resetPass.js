@@ -51,7 +51,8 @@ updatePassword.addEventListener("click", function (e) {
           title: "Změna provedena",
           text: "Nové heslo bylo vytvořeno, přihlas se prosím.",
           confirmButtonColor: "#51BE7C",
-          confirmButtonText: '<a href="/login">Hotovo</a>',
+          confirmButtonText:
+            '<a class="loginRedirect" href="/login">Hotovo</a>',
         });
       } else {
         Swal.fire({

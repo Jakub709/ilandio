@@ -22,11 +22,13 @@ router.post("/", async (req, res, next) => {
     const moneyTransfer = Math.abs(req.body.moneyTransfer.trim() * 1);
     const updatedSender = await User.findById(req.session.user._id);
 
-    const receiverConfirmed = await User.findOne({ username: usernameTransfer });
+    const receiverConfirmed = await User.findOne({
+      username: usernameTransfer,
+    });
     if (!receiverConfirmed) {
       const noReceiver = {
         userLoggedIn: updatedSender,
-        errorMessage: "Bankovní účet příjemce neexistuje",
+        errorMessage: "Uživatelské jméno příjemce neexistuje",
         status: "fail",
       };
       res.status(200).send(noReceiver);
