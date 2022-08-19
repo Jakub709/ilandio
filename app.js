@@ -8,6 +8,12 @@ const mongoose = require("./database");
 const session = require("express-session");
 const middleware = require("./utils/requireLogin");
 const User = require("./schemas/UserSchema");
+const cors = require("cors");
+
+// CORS - kvůli funkčnosti socket.io
+app.use(cors());
+//app.use(cors({ origin: "https://www.ilandio.cz" }));
+app.options("*", cors());
 
 const server = app.listen(port, () =>
   console.log("Server listening on port " + port)
