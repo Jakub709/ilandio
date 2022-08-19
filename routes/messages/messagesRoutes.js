@@ -35,8 +35,7 @@ router.get("/:chatId", async (req, res, next) => {
   };
 
   if (!isValidId) {
-    payload.errorMessage =
-      "Chat does not exist or you do not have permission to view it.";
+    payload.errorMessage = "Chat neexistuje :-(.";
     return res.status(200).render("chatPage.pug", payload);
   }
 
