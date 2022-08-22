@@ -40,6 +40,7 @@ router.post(
       return res.sendStatus(400);
     }
 
+    // Problém s digital ocean?
     var filePath = `/uploads/images/${req.file.filename}.jpeg`;
     var tempPath = req.file.path;
     var targetPath = path.join(__dirname, `../../${filePath}`);
