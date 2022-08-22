@@ -7,6 +7,15 @@ const path = require("path");
 const fs = require("fs");
 const upload = multer({ dest: "uploads/" });
 const User = require("../../schemas/UserSchema");
+const AWS = require("aws-sdk");
+
+require("dotenv").config();
+const spacesEndpoint = new AWS.Endpoint(process.env.DO_SPACES_ENDPOINT);
+const s3 = new AWS.S3({
+  endpoint: spacesEndpoint,
+  accessKeyId: process.env.DO_SPACES_KEY,
+  secretAccessKey: process.env.DO_SPACES_SECRET,
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -46,10 +55,23 @@ router.post(
     var targetPath = path.join(__dirname, `../../${filePath}`);
 
     fs.rename(tempPath, targetPath, async (error) => {
-      if (error != null) {
-        console.log(error);
-        return res.sendStatus(400);
-      }
+      s3.putObjet(
+        {
+          Bucket: process.env.DO_SPACES_NAME,
+          Key: "any_file_or_path_name.jpg",
+          Body: file,
+          ACL: "public",
+        },
+        (err, data) => {
+          if (err) return console.log(err);
+          console.log("Your file has been uploaded successfully!", data);
+        }
+      );
+
+      // if (error != null) {
+      //   console.log(error);
+      //   return res.sendStatus(400);
+      // }
 
       req.session.user = await User.findByIdAndUpdate(
         req.session.user._id,

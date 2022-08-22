@@ -9,6 +9,7 @@
   "author": "Jakub Solnička",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1199.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
     "compression": "^1.7.4",
