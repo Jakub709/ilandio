@@ -55,8 +55,7 @@ router.get("/:chatId", async (req, res, next) => {
   }
 
   if (chat == null) {
-    payload.errorMessage =
-      "Chat does not exist or you do not have permission to view it.";
+    payload.errorMessage = "Chat neexistuje nebo nemáš oprávnění ho vidět.";
   } else {
     payload.chat = chat;
   }
