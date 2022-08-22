@@ -72,6 +72,10 @@ app.get("/gdpr", async (req, res, next) => {
   res.status(200).render("gdpr");
 });
 app.use("/logout", logoutRoutes);
+app.get("/logout-page", async (req, res, next) => {
+  res.status(200).render("logout-page");
+});
+
 app.use("/reset-pass", resetPassRoutes);
 app.use("/reset-pass-email", resetPassEmailRoutes);
 
