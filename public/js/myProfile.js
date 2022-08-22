@@ -170,7 +170,7 @@ let cropper;
 const filePhoto = document.getElementById("filePhoto");
 filePhoto.addEventListener("change", function (event) {
   const fileSize = this.files[0].size / 1024;
-  if (this.files && this.files[0] && fileSize <= 300) {
+  if (this.files && this.files[0] && fileSize <= 500) {
     var reader = new FileReader();
     reader.onload = (e) => {
       var image = document.getElementById("imagePreview");
@@ -190,7 +190,7 @@ filePhoto.addEventListener("change", function (event) {
     Swal.fire({
       icon: "error",
       title: "Pozor chyba",
-      text: `Soubor je příliš veliký. Maximální velikost je 300 kB.`,
+      text: `Soubor je příliš veliký. Maximální velikost je 500 kB.`,
       confirmButtonColor: "#F27474",
       confirmButtonText: "Rozumím",
     });
