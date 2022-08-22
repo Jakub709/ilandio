@@ -9,14 +9,6 @@ const upload = multer({ dest: "uploads/" });
 const User = require("../../schemas/UserSchema");
 const AWS = require("aws-sdk");
 
-require("dotenv").config();
-const spacesEndpoint = new AWS.Endpoint(process.env.DO_SPACES_ENDPOINT);
-const s3 = new AWS.S3({
-  endpoint: spacesEndpoint,
-  accessKeyId: process.env.DO_SPACES_KEY,
-  secretAccessKey: process.env.DO_SPACES_SECRET,
-});
-
 app.use(bodyParser.urlencoded({ extended: false }));
 
 router.get("/", async (req, res, next) => {
@@ -40,6 +32,15 @@ router.get("/", async (req, res, next) => {
     });
 });
 
+// Upload fotografií
+require("dotenv").config();
+const spacesEndpoint = new AWS.Endpoint(process.env.DO_SPACES_ENDPOINT);
+const s3 = new AWS.S3({
+  endpoint: spacesEndpoint,
+  accessKeyId: process.env.DO_SPACES_KEY,
+  secretAccessKey: process.env.DO_SPACES_SECRET,
+});
+
 router.post(
   "/profilePicture",
   upload.single("croppedImage"),
@@ -49,37 +50,46 @@ router.post(
       return res.sendStatus(400);
     }
 
-    // Problém s digital ocean?
-    var filePath = `/uploads/images/${req.file.filename}.jpeg`;
-    var tempPath = req.file.path;
-    var targetPath = path.join(__dirname, `../../${filePath}`);
+    // Problém, pokud aktualizuju github, fotky zmizí,
+    //funguje dobře pouze na localhostu
 
-    fs.rename(tempPath, targetPath, async (error) => {
-      s3.putObjet(
-        {
-          Bucket: process.env.DO_SPACES_NAME,
-          Key: "any_file_or_path_name.jpg",
-          Body: file,
-          ACL: "public",
-        },
-        (err, data) => {
-          if (err) return console.log(err);
-          console.log("Your file has been uploaded successfully!", data);
-        }
-      );
+    // var filePath = `/uploads/images/${req.file.filename}.jpeg`;
+    // var tempPath = req.file.path;
+    // var targetPath = path.join(__dirname, `../../${filePath}`);
 
-      // if (error != null) {
-      //   console.log(error);
-      //   return res.sendStatus(400);
-      // }
+    const filePath = `https://ilandio.fra1.digitaloceanspaces.com/${req.file.filename}`;
+    const tempPath = req.file.path;
+    const blob = fs.readFileSync(tempPath);
 
-      req.session.user = await User.findByIdAndUpdate(
-        req.session.user._id,
-        { profilePic: filePath },
-        { new: true }
-      );
-      res.sendStatus(204);
-    });
+    s3.putObject(
+      {
+        Bucket: process.env.DO_SPACES_NAME,
+        Key: req.file.filename,
+        Body: blob,
+        ACL: "public-read",
+        ContentType: "image/jpg",
+      },
+      (err, data) => {
+        if (err) return console.log(err);
+        console.log("Your file has been uploaded successfully!", data);
+      }
+    );
+
+    req.session.user = await User.findByIdAndUpdate(
+      req.session.user._id,
+      { profilePic: filePath },
+      { new: true }
+    );
+    res.sendStatus(204);
+
+    // fs.rename(tempPath, targetPath, async (error) => {
+    // req.session.user = await User.findByIdAndUpdate(
+    //   req.session.user._id,
+    //   { profilePic: filePath },
+    //   { new: true }
+    // );
+    // res.sendStatus(204);
+    // });
   }
 );
 
