@@ -213,6 +213,10 @@
     padding: 2.4rem 1.6rem;
   }
 
+  .margin-right-sm {
+    margin-right: 0 !important;
+  }
+
   .section-hero {
     padding: 9.4rem 0 6.4rem 0;
     margin-top: 7rem;
