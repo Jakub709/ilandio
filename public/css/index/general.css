@@ -131,6 +131,7 @@ body {
 
 .btn--full,
 .btn--full {
+  border: 1px solid var(--blue-color) !important;
   background-color: var(--blue-color);
   /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   color: #fff; */
