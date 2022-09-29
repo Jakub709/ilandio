@@ -135,6 +135,12 @@
   font-size: 1.2rem;
 }
 
+.heading-input-location {
+  -webkit-appearance: none;
+  margin-bottom: 0rem;
+  font-size: 1.2rem;
+}
+
 .form-item {
   position: relative;
   margin-bottom: 15px;
@@ -178,6 +184,15 @@ textarea {
   padding: 0 10px;
   color: var(--main-color);
   transition: all 0.3s ease;
+}
+
+.locationText {
+  font-size: 12px;
+  font-weight: bold;
+  background: transparent;
+  border-radius: 0.25rem;
+  padding: 0 10px;
+  color: var(--main-color);
 }
 
 .input-foto {

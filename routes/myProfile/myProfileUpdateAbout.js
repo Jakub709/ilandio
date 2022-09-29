@@ -10,11 +10,16 @@ router.post("/", async (req, res) => {
   try {
     // Data z ajaxu
     const about = req.body.about;
+    const locationLatitude = req.body.locationLatitude;
+    const locationLongitude = req.body.locationLongitude;
 
     const updatedUser = await User.findByIdAndUpdate(
       req.session.user._id,
       {
         about: about || req.session.user.about,
+        locationLatitude: locationLatitude || req.session.user.locationLatitude,
+        locationLongitude:
+          locationLongitude || req.session.user.locationLongitude,
       },
       {
         new: true,

@@ -95,6 +95,7 @@ app.use("/posts-list-following", middleware.requireLogin, postsListFollowing);
 // Users
 const usersSearchRoutes = require("./routes/users/usersSearchRoutes");
 const usersListRoutes = require("./routes/users/usersListRoutes");
+const usersListMapDataRoutes = require("./routes/users/usersListMapDataRoutes");
 const userProfileRoutes = require("./routes/users/userProfileRoutes");
 const followRoutes = require("./routes/users/followRoutes");
 const unFollowRoutes = require("./routes/users/unFollowRoutes");
@@ -102,6 +103,10 @@ const userProfileUsernameRoutes = require("./routes/users/userProfileUsernameRou
 
 app.use("/users-search", middleware.requireLogin, usersSearchRoutes);
 app.use("/users-list", middleware.requireLogin, usersListRoutes);
+app.get("/users-list-map", middleware.requireLogin, async (req, res, next) => {
+  res.status(200).render("map");
+});
+app.use("/users-list-map-data", middleware.requireLogin, usersListMapDataRoutes);
 app.use("/user-profile", middleware.requireLogin, userProfileRoutes);
 app.use("/follow", middleware.requireLogin, followRoutes);
 app.use("/unfollow", middleware.requireLogin, unFollowRoutes);

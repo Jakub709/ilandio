@@ -114,6 +114,10 @@
                 <i class="bx bx-coin-stack nav__icon"></i>
                 <span class="nav__name">Banka</span>
               </a>
+              <a href="/users-list-map" class="nav__link">
+                <i class="bx bx-map nav__icon"></i>
+                <span class="nav__name">Mapa setkání</span>
+              </a>
               <a href="/messages" class="nav__link">
                 <i class="bx bx-message-rounded nav__icon"></i>
                 <span class="nav__name">Zprávy</span>
@@ -135,6 +139,12 @@
       <div class="go-up-here"></div>
       <div class="my-post-page">
         <div class="container">
+          <div class="filter-div">
+            <button class="filter-button go-up-here">📂 Filtr</button>
+            <span class="tooltiptextMain"
+              >Klikneš-li kdekoli na stránce 2x, objeví se filtr.</span
+            >
+          </div>
           <% users.forEach(function(user) { %>
           <div id="my-posts" class="my-post">
             <div class="grid grid--2-cols-post">
@@ -260,6 +270,108 @@
         />
       </svg>
     </button>
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close"></span>
+        <form>
+          <div class="">
+            <div>
+              <h5>Oragizace</h5>
+              <div class="grid grid--4-cols">
+                <div>
+                  <input type="checkbox" id="ilandio" value="true" />
+                  <label for="ilandio">iLandio</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="muni" value="true" />
+                  <label for="muni">MUNI</label>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h5>Region</h5>
+              <div class="grid grid--4-cols">
+                <div>
+                  <input type="checkbox" id="pardubickyKraj" value="true" />
+                  <label for="pardubickyKraj">Pardubický kraj</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="kralovehradeckyKraj"
+                    value="true"
+                  />
+                  <label for="kralovehradeckyKraj">Královehradecký kraj</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="libereckyKraj" value="true" />
+                  <label for="libereckyKraj">Liberecký kraj</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="usteckyKraj" value="true" />
+                  <label for="usteckyKraj">Ústecký kraj</label>
+                </div>
+
+                <div>
+                  <input type="checkbox" id="karlovarskyKraj" value="true" />
+                  <label for="karlovarskyKraj">Karlovarský kraj</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="plzenskyKraj" value="true" />
+                  <label for="plzenskyKraj">Plzeňský kraj</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="jihoceskyKraj" value="true" />
+                  <label for="jihoceskyKraj">Jihočeský kraj</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="stredoceskyKraj" value="true" />
+                  <label for="stredoceskyKraj">Středočeský kraj</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="praha" value="true" />
+                  <label for="praha">Praha</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="vysocina" value="true" />
+                  <label for="vysocina">Kraj Vysočina</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="jihomoravskyKraj" value="true" />
+                  <label for="jihomoravskyKraj">Jihomoravský kraj</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="olomouckyKraj" value="true" />
+                  <label for="olomouckyKraj">Olomoucký kraj</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="zlinskyKraj" value="true" />
+                  <label for="zlinskyKraj">Zlínský kraj</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="moravskoslezskyKraj"
+                    value="true"
+                  />
+                  <label for="moravskoslezskyKraj">Moravskoslezský kraj</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="ostrava" value="true" />
+                  <label for="ostrava">Ostrava</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="brno" value="true" />
+                  <label for="brno">Brno</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <input class="button-1" type="submit" value="Vyhledat" />
+        </form>
+      </div>
+    </div>
     <script src="/js/usersList.js"></script>
     <script src="/js/commonLoggedIn.js"></script>
   </body>

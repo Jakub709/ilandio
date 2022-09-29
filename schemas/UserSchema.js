@@ -16,6 +16,8 @@ const UserSchema = new Schema(
     position: { type: String, default: "" },
     hex: { type: String, default: "#147AED" },
     region: { type: String, default: "" },
+    locationLatitude: { type: Number },
+    locationLongitude: { type: Number },
     password: { type: String, required: true },
     profilePic: { type: String, default: "/images/profilePic.png" },
     moneyTransfer: { type: Array, default: 500 },

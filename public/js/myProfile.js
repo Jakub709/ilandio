@@ -23,7 +23,8 @@ const name = document.getElementById("name");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const passwordConf = document.getElementById("passwordConf");
-const about = document.getElementById("about");
+const locationLatitude = document.getElementById("locationLatitude");
+const locationLongitude = document.getElementById("locationLongitude");
 const facebook = document.getElementById("facebook");
 const linkedin = document.getElementById("linkedin");
 const github = document.getElementById("github");
@@ -39,6 +40,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     name.value = getData.userLoggedIn.name;
     email.value = getData.userLoggedIn.email;
     about.textContent = getData.userLoggedIn.about;
+    locationLatitude.value = getData.userLoggedIn.locationLatitude;
+    locationLongitude.value = getData.userLoggedIn.locationLongitude;
     facebook.value = getData.userLoggedIn.facebook;
     linkedin.value = getData.userLoggedIn.linkedin;
     github.value = getData.userLoggedIn.github;
@@ -138,12 +141,16 @@ updateAbout.addEventListener("click", function (e) {
   e.preventDefault();
   const data = {
     about: about.value,
+    locationLatitude: locationLatitude.value,
+    locationLongitude: locationLongitude.value,
   };
   $.post("/my-profile-update-about", data, (postData, status, xhr) => {
     if (!postData) {
       return;
     } else {
       about.value = postData.userLoggedIn.about;
+      locationLatitude.value = postData.userLoggedIn.locationLatitude;
+      locationLongitude.value = postData.userLoggedIn.locationLongitude;
       if (postData.status == "success") {
         Swal.fire({
           icon: "success",

@@ -20,6 +20,7 @@
     "express": "^4.17.3",
     "express-session": "^1.17.2",
     "infinite-scroll": "^4.0.1",
+    "leaflet": "^1.9.1",
     "mongodb": "^4.7.0",
     "mongoose": "^6.2.10",
     "multer": "^1.4.5-lts.1",

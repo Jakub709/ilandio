@@ -38,6 +38,7 @@ router.post("/", async (req, res, next) => {
         req.session.user = user;
         // & je zde kvůli: const url = req.originalUrl.split("&page")[0]; postsListRoutes; postsSearchRoutes; postsListFollowing;
         return res.redirect("/posts-list?&page=1");
+        //return res.redirect("/users-list-map");
       }
     }
 

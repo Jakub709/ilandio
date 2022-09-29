@@ -60,6 +60,9 @@ header.header
           a.nav__link(href='/bank')
             i.bx.bx-coin-stack.nav__icon
             span.nav__name Banka
+          a.nav__link(href='/users-list-map')
+            i.bx.bx-map.nav__icon
+            span.nav__name Mapa setkání
           a.nav__link(href='/messages')
             i.bx.bx-message-rounded.nav__icon
             span.nav__name Zpr&aacute;vy
@@ -106,7 +109,12 @@ main
                 p.heading-input Pracovn&iacute; &uacute;daje
                 .grid.grid-row-gap.grid--3-cols
                   .form-item
-                    input#job.input-field(type='text' name='job' placeholder='')
+                    input#job.input-field(type='text' list='categoryList' name='job' placeholder='')
+                    datalist#categoryList
+                      //- option(value='GreenFoxAcademy')
+                      option(value='iLandio')
+                      option(value='MUNI')
+                      //- option(value='StartupJobs')
                     label(for='job') Kde pracuji
                   .form-item
                     input#position.input-field(type='text' name='position' placeholder='')
@@ -147,6 +155,14 @@ main
                 .form-item
                   textarea#about(name='about' cols='30' rows='10' placeholder='Představte se nám :-)')
                   label(for='about') Pov&ecaron;zte n&aacute;m n&ecaron;co zaj&iacute;mav&eacute;ho
+                .form-item
+                 p.heading-input-location Mapa setkání
+                 p.locationText Podělte se o souřadnice vašeho oblíbeného místa k setkání :-). Může se jednat o prostory vaší firmy, knihovnu, školu či oblíbenou kavárnu.
+                 .grid.grid-row-gap.grid--2-cols
+                  input#locationLatitude.input-field(type='number' name='locationLatitude' placeholder='zeměpisná šířka, např. 49.19586 pro Bar, který neexistuje :-)')
+                  label(for='locationLatitude')
+                  input#locationLongitude.input-field(type='number' name='locationLongitude' placeholder='zeměpisná délka, např. 16.60972 pro Bar, který neexistuje :-)')
+                  label(for='locationLongitude')
             input#updateAbout.button-1.button-1-colors(type='submit' value='Uložit')
       .my-profile.tab
         form.inputField
