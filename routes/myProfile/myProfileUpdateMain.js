@@ -10,7 +10,9 @@ router.post("/", async (req, res) => {
   try {
     // Data z ajaxu
     const name = req.body.name;
-    let email = req.body.email;
+    // Ochrana před nepovoleným emailem
+    //let email = req.body.email;
+    const email = req.body.email;
     const facebook = req.body.facebook;
     const linkedin = req.body.linkedin;
     const github = req.body.github;
@@ -20,16 +22,16 @@ router.post("/", async (req, res) => {
     const hex = req.body.hex;
 
     // Ochrana před nepovoleným emailem
-    const emailDomena = email.split("@").pop();
-    const seznamDomen = [
-      "seznam.cz",
-      "mail.muni.cz",
-      "gmail.com",
-      "ilandio.cz",
-    ];
-    if (!seznamDomen.includes(emailDomena)) {
-      email = req.session.user.email;
-    }
+    // const emailDomena = email.split("@").pop();
+    // const seznamDomen = [
+    //   "seznam.cz",
+    //   "mail.muni.cz",
+    //   "gmail.com",
+    //   "ilandio.cz",
+    // ];
+    // if (!seznamDomen.includes(emailDomena)) {
+    //   email = req.session.user.email;
+    // }
 
     const updatedUser = await User.findByIdAndUpdate(
       req.session.user._id,
