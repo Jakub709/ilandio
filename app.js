@@ -106,7 +106,11 @@ app.use("/users-list", middleware.requireLogin, usersListRoutes);
 app.get("/users-list-map", middleware.requireLogin, async (req, res, next) => {
   res.status(200).render("map");
 });
-app.use("/users-list-map-data", middleware.requireLogin, usersListMapDataRoutes);
+app.use(
+  "/users-list-map-data",
+  middleware.requireLogin,
+  usersListMapDataRoutes
+);
 app.use("/user-profile", middleware.requireLogin, userProfileRoutes);
 app.use("/follow", middleware.requireLogin, followRoutes);
 app.use("/unfollow", middleware.requireLogin, unFollowRoutes);
